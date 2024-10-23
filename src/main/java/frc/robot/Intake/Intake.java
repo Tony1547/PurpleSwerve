@@ -1,4 +1,4 @@
-package frc.robot.subsystems.intake;
+package frc.robot.Intake;
 
 import com.revrobotics.CANSparkMax;
 
@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.IntakeConstants.IntakeState;
-import frc.utils.MotorUtils;
 
 public class Intake extends SubsystemBase {
 
@@ -42,19 +41,13 @@ public class Intake extends SubsystemBase {
     }
 
     /**
-     * Commands the intake to spin in the negative direction - outtaking
-     */
-    public Command outtake() {
-        m_intakeState = IntakeState.OUTTAKE;
-        return Commands.run(()-> m_intakeMotor.set(IntakeConstants.kOuttakeSpeed), this);
-    }
-
-    /**
      * Set the default Command for the subsystem
      */
     public void setDefaultCommand() {
         m_intakeState = IntakeState.IDLE;
-        setDefaultCommand(new RunCommand(()-> MotorUtils.stopMotor(m_intakeMotor), this));
+        setDefaultCommand(new RunCommand(()-> {
+            m_intakeMotor.stopMotor(m_intakeMotor);
+        }, this));
     }
     
-}
+} 
