@@ -12,6 +12,9 @@ import org.lasarobotics.hardware.kauailabs.NavX2;
 import org.lasarobotics.hardware.revrobotics.Spark;
 import org.lasarobotics.led.LEDStrip;
 import org.lasarobotics.utils.PIDConstants;
+
+import com.revrobotics.CANSparkBase.IdleMode;
+
 import edu.wpi.first.math.Pair;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -128,4 +131,21 @@ public final class Constants {
     public static final String SMARTDASHBOARD_DEFAULT_TAB = "SmartDashboard";
     public static final String SMARTDASHBOARD_AUTO_MODE = "Auto Mode";
   }
+
+
+      /** Intake Constants */
+    public static final class IntakeConstants {
+      public static final int kIntakeCANID = 15;
+      public static final int kIntakeCurrentLimit = 60;
+      public static final boolean kIntakeMotorInverted = true;
+      public static final double kIntakeSpeed = 1;
+      public static final double kOuttakeSpeed = -1;
+      public static final IdleMode kIntakeIdleMode = IdleMode.kCoast;
+
+      public enum IntakeState{
+        IDLE, 
+        INTAKE,
+        OUTTAKE,
+      }
+    }
 }
